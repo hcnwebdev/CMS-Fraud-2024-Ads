@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Banners Page</title>
+    <link rel="stylesheet" href="../styles-min.css" />
     <script>
         function reloadIframe(iframeId) {
             var iframe = document.getElementById(iframeId);
@@ -15,126 +16,88 @@
             }
         }
     </script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-    
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-    
-        main {
-            padding: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-    
-        section { margin-bottom: 30px; }
-    
-        h2 {
-            font-size: 1.5rem;
-            color: #333;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-            margin: 2rem 0;
-        }
-    
-        .banner-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-    
-        .banner {
-            margin: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .caption { 
-            color: grey;
-            width: calc(100% - 40px);
-            float: left;
-        }
-    
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block; /* Added display property */
-            overflow: hidden;
-        }
-        
-        .s_300x250 { width: 300px; height: 250px; }
-        .s_300x600 { width: 300px; height: 600px; }
-        .s_160x600 { width: 160px; height: 600px; }
-        .s_728x90 { width: 728px; height: 90px; }
-        .s_970x250 { width: 970px; height: 250px; }
-        .s_320x50 { width: 320px; height: 50px; }
-        .s_300x50 { width: 300px; height: 50px; }
-        .s_320x480 { width: 320px; height: 480px; }
-        .s_320x200 { width: 320px; height: 200px; }
-        .s_970x90 { width: 970px; height: 90px; }
-            
-        @media (max-width: 768px) {
-            .banner {
-                flex: 0 0 100%;
-            }
-        }
-        
-        .replay-button {
-            /* position: absolute;
-            bottom: 10px;
-            right: 0;
-            z-index: 99; */
-            float: right;
-            outline: 0;
-            border: 0;
-            padding: 0;
-            width: 32px;
-            height: 32px;
-            margin-top: 0.5rem;
-            cursor: pointer;
-            border-radius: 32px;
-            background-color: #fee;
-            background-repeat: no-repeat;
-            background-position: 0 0;
-            background-image: url('data:image/svg+xml,%3Csvg fill="none" height="128" viewBox="0 0 32 128" width="32" xmlns="http://www.w3.org/2000/svg"%3E%3Cg clip-rule="evenodd" fill-rule="evenodd"%3E%3Cpath d="m13 10.0979 9.4434 5.9021-9.4434 5.9021zm1 1.8042v8.1958l6.5566-4.0979z" fill="%23000" fill-opacity=".8"/%3E%3Cpath d="m13 42.0979 9.4434 5.9021-9.4434 5.9021zm1 1.8042v8.1958l6.5566-4.0979z" fill="%23000" fill-opacity=".3"/%3E%3Cpath d="m13 74.0979 9.4434 5.9021-9.4434 5.9021zm1 1.8042v8.1958l6.5566-4.0979z" fill="%2318a0fb"/%3E%3Cpath d="m13 106.098 9.4434 5.902-9.4434 5.902zm1 1.804v8.196l6.5566-4.098z" fill="%23fff"/%3E%3C/g%3E%3C/svg%3E');
-        }
-        
-        .replay-button:hover {
-            background-color: #ccc;
-        }
-        
-        .replay-button:active {
-            background-color: #eee;
-        }
-        
-    </style>
 </head>
 <body>
 
     <header>
         <h1>CMS Fraud 2025 - Batch 1</h1>
+        <p><a href="../index.html">Home</a> / <a href="../2025/">2025</a> / Batch 1</p>
     </header>
 
     <main>
         
-        <!-- 3 Formas de fraude / 3 Forms of Fraud -->
+        <!-- Alert -->
         <section>
-            <h2>300x250</h2>
+            <h2>Concept 26 | Alerta - Alert</h2>
             <div class="banner-container">
+                <div class="banner">
+                    <iframe id="c26_160x600" class="s_160x600" src="batch01/c26/160x600/index.html"></iframe>
+                    <p class="caption">160x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c26_160x600')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c26_300x600" class="s_300x600" src="batch01/c26/300x600/index.html"></iframe>
+                    <p class="caption">300x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c26_300x600')"></button>
+                </div>
                 <div class="banner">
                     <iframe id="c26_300x250" class="s_300x250" src="batch01/c26/300x250/index.html"></iframe>
                     <p class="caption">300x250</p>
                     <button class="replay-button" type="button" onClick="reloadIframe('c26_300x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c26_728x90" class="s_728x90" src="batch01/c26/728x90/index.html"></iframe>
+                    <p class="caption">728x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c26_728x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c26_970x250" class="s_970x250" src="batch01/c26/970x250/index.html"></iframe>
+                    <p class="caption">970x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c26_970x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c26_970x90" class="s_970x90" src="batch01/c26/970x90/index.html"></iframe>
+                    <p class="caption">970x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c26_970x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c26_320x480" class="s_320x480" src="batch01/c26/320x480/index.html"></iframe>
+                    <p class="caption">320x480</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c26_320x480')"></button>
+                </div>
+                <div>
+                    <div class="banner">
+                        <iframe id="c26_320x200" class="s_320x200" src="batch01/c26/320x200/index.html"></iframe>
+                        <p class="caption">320x200</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c26_320x200')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c26_320x50" class="s_320x50" src="batch01/c26/320x50/index.html"></iframe>
+                        <p class="caption">320x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c26_320x50')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c26_300x50" class="s_300x50" src="batch01/c26/300x50/index.html"></iframe>
+                        <p class="caption">300x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c26_300x50')"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Protect Your Card -->
+        <section>
+            <h2>Concept 27 | Protege tu tarjeta - Protect Your Card</h2>
+            <div class="banner-container">
+                <div class="banner">
+                    <iframe id="c27_160x600" class="s_160x600" src="batch01/c27/160x600/index.html"></iframe>
+                    <p class="caption">160x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c27_160x600')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c27_300x600" class="s_300x600" src="batch01/c27/300x600/index.html"></iframe>
+                    <p class="caption">300x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c27_300x600')"></button>
                 </div>
                 <div class="banner">
                     <iframe id="c27_300x250" class="s_300x250" src="batch01/c27/300x250/index.html"></iframe>
@@ -142,9 +105,117 @@
                     <button class="replay-button" type="button" onClick="reloadIframe('c27_300x250')"></button>
                 </div>
                 <div class="banner">
+                    <iframe id="c27_728x90" class="s_728x90" src="batch01/c27/728x90/index.html"></iframe>
+                    <p class="caption">728x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c27_728x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c27_970x250" class="s_970x250" src="batch01/c27/970x250/index.html"></iframe>
+                    <p class="caption">970x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c27_970x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c27_970x90" class="s_970x90" src="batch01/c27/970x90/index.html"></iframe>
+                    <p class="caption">970x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c27_970x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c27_320x480" class="s_320x480" src="batch01/c27/320x480/index.html"></iframe>
+                    <p class="caption">320x480</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c27_320x480')"></button>
+                </div>
+                <div>
+                    <div class="banner">
+                        <iframe id="c27_320x200" class="s_320x200" src="batch01/c27/320x200/index.html"></iframe>
+                        <p class="caption">320x200</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c27_320x200')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c27_320x50" class="s_320x50" src="batch01/c27/320x50/index.html"></iframe>
+                        <p class="caption">320x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c27_320x50')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c27_300x50" class="s_300x50" src="batch01/c27/300x50/index.html"></iframe>
+                        <p class="caption">300x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c27_300x50')"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Beware of Hospice Scammers -->
+        <section>
+            <h2>Concept 36 | Cuidado con los estafadores de servicios de hospicio - Beware of Hospice Scammers</h2>
+            <div class="banner-container">
+                <div class="banner">
+                    <iframe id="c36_160x600" class="s_160x600" src="batch01/c36/160x600/index.html"></iframe>
+                    <p class="caption">160x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c36_160x600')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c36_300x600" class="s_300x600" src="batch01/c36/300x600/index.html"></iframe>
+                    <p class="caption">300x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c36_300x600')"></button>
+                </div>
+                <div class="banner">
                     <iframe id="c36_300x250" class="s_300x250" src="batch01/c36/300x250/index.html"></iframe>
                     <p class="caption">300x250</p>
                     <button class="replay-button" type="button" onClick="reloadIframe('c36_300x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c36_728x90" class="s_728x90" src="batch01/c36/728x90/index.html"></iframe>
+                    <p class="caption">728x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c36_728x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c36_970x250" class="s_970x250" src="batch01/c36/970x250/index.html"></iframe>
+                    <p class="caption">970x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c36_970x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c36_970x90" class="s_970x90" src="batch01/c36/970x90/index.html"></iframe>
+                    <p class="caption">970x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c36_970x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c36_320x480" class="s_320x480" src="batch01/c36/320x480/index.html"></iframe>
+                    <p class="caption">320x480</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c36_320x480')"></button>
+                </div>
+                <div>
+                    <div class="banner">
+                        <iframe id="c36_320x200" class="s_320x200" src="batch01/c36/320x200/index.html"></iframe>
+                        <p class="caption">320x200</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c36_320x200')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c36_320x50" class="s_320x50" src="batch01/c36/320x50/index.html"></iframe>
+                        <p class="caption">320x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c36_320x50')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c36_300x50" class="s_300x50" src="batch01/c36/300x50/index.html"></iframe>
+                        <p class="caption">300x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c36_300x50')"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stop Hospice Fraud -->
+        <section>
+            <h2>Concept 37 | Detén el fraude en servicios de hospicio - Stop Hospice Fraud</h2>
+            <div class="banner-container">
+                <div class="banner">
+                    <iframe id="c37_160x600" class="s_160x600" src="batch01/c37/160x600/index.html"></iframe>
+                    <p class="caption">160x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c37_160x600')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c37_300x600" class="s_300x600" src="batch01/c37/300x600/index.html"></iframe>
+                    <p class="caption">300x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c37_300x600')"></button>
                 </div>
                 <div class="banner">
                     <iframe id="c37_300x250" class="s_300x250" src="batch01/c37/300x250/index.html"></iframe>
@@ -152,13 +223,104 @@
                     <button class="replay-button" type="button" onClick="reloadIframe('c37_300x250')"></button>
                 </div>
                 <div class="banner">
+                    <iframe id="c37_728x90" class="s_728x90" src="batch01/c37/728x90/index.html"></iframe>
+                    <p class="caption">728x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c37_728x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c37_970x250" class="s_970x250" src="batch01/c37/970x250/index.html"></iframe>
+                    <p class="caption">970x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c37_970x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c37_970x90" class="s_970x90" src="batch01/c37/970x90/index.html"></iframe>
+                    <p class="caption">970x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c37_970x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c37_320x480" class="s_320x480" src="batch01/c37/320x480/index.html"></iframe>
+                    <p class="caption">320x480</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c37_320x480')"></button>
+                </div>
+                <div>
+                    <div class="banner">
+                        <iframe id="c37_320x200" class="s_320x200" src="batch01/c37/320x200/index.html"></iframe>
+                        <p class="caption">320x200</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c37_320x200')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c37_320x50" class="s_320x50" src="batch01/c37/320x50/index.html"></iframe>
+                        <p class="caption">320x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c37_320x50')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c37_300x50" class="s_300x50" src="batch01/c37/300x50/index.html"></iframe>
+                        <p class="caption">300x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c37_300x50')"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Feline Fraud -->
+        <section>
+            <h2>Concept 44 | Feline Fraud - Fraude felino</h2>
+            <div class="banner-container">
+                <div class="banner">
+                    <iframe id="c44_160x600" class="s_160x600" src="batch01/c44/160x600/index.html"></iframe>
+                    <p class="caption">160x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c44_160x600')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c44_300x600" class="s_300x600" src="batch01/c44/300x600/index.html"></iframe>
+                    <p class="caption">300x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c44_300x600')"></button>
+                </div>
+                <div class="banner">
                     <iframe id="c44_300x250" class="s_300x250" src="batch01/c44/300x250/index.html"></iframe>
                     <p class="caption">300x250</p>
                     <button class="replay-button" type="button" onClick="reloadIframe('c44_300x250')"></button>
                 </div>
-              
+                <div class="banner">
+                    <iframe id="c44_728x90" class="s_728x90" src="batch01/c44/728x90/index.html"></iframe>
+                    <p class="caption">728x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c44_728x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c44_970x250" class="s_970x250" src="batch01/c44/970x250/index.html"></iframe>
+                    <p class="caption">970x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c44_970x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c44_970x90" class="s_970x90" src="batch01/c44/970x90/index.html"></iframe>
+                    <p class="caption">970x90</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c44_970x90')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c44_320x480" class="s_320x480" src="batch01/c44/320x480/index.html"></iframe>
+                    <p class="caption">320x480</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c44_320x480')"></button>
+                </div>
+                <div>
+                    <div class="banner">
+                        <iframe id="c44_320x200" class="s_320x200" src="batch01/c44/320x200/index.html"></iframe>
+                        <p class="caption">320x200</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c44_320x200')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c44_320x50" class="s_320x50" src="batch01/c44/320x50/index.html"></iframe>
+                        <p class="caption">320x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c44_320x50')"></button>
+                    </div>
+                    <div class="banner">
+                        <iframe id="c44_300x50" class="s_300x50" src="batch01/c44/300x50/index.html"></iframe>
+                        <p class="caption">300x50</p>
+                        <button class="replay-button" type="button" onClick="reloadIframe('c44_300x50')"></button>
+                    </div>
+                </div>
             </div>
         </section>
+
     </main>
 
 </body>

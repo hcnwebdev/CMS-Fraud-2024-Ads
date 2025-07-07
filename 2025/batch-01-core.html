@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles-min.css" />
+    <title>Responsive Banners Page</title>
+    <script>
+        function reloadIframe(iframeId) {
+            var iframe = document.getElementById(iframeId);
+        
+            if (iframe) {
+                iframe.contentWindow.location.reload();
+            } else {
+                console.error("Iframe not found.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>CMS Fraud 2025 - Batch 1 (CORE)</h1>
+        <p><a href="../index.html">Home</a> / <a href="../2025/">2025</a> / Batch 1 - CORE</p>
+    </header>
+
+    <main>
+        
+        <!-- 3 Formas de fraude / 3 Forms of Fraud -->
+        <section>
+            <h2>300x250</h2>
+            <div class="banner-container">
+                <div class="banner">
+                    <iframe id="c26_300x250" class="s_300x250" src="batch01/c26/300x250/index.html"></iframe>
+                    <p class="caption">300x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c26_300x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c27_300x250" class="s_300x250" src="batch01/c27/300x250/index.html"></iframe>
+                    <p class="caption">300x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c27_300x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c36_300x250" class="s_300x250" src="batch01/c36/300x250/index.html"></iframe>
+                    <p class="caption">300x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c36_300x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c37_300x250" class="s_300x250" src="batch01/c37/300x250/index.html"></iframe>
+                    <p class="caption">300x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c37_300x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="c44_300x250" class="s_300x250" src="batch01/c44/300x250/index.html"></iframe>
+                    <p class="caption">300x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('c44_300x250')"></button>
+                </div>
+              
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
