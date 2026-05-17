@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Fraud 2026 - Display Banners</title>
+    <link rel="stylesheet" href="../styles-min.css" />
+    <script>
+        function reloadIframe(iframeId) {
+            var iframe = document.getElementById(iframeId);
+        
+            if (iframe) {
+                iframe.contentWindow.location.reload();
+            } else {
+                console.error("Iframe not found.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>CMS Fraud 2026 - Display Banners</h1>
+    </header>
+
+    <main>
+        
+        <!-- Magnifying Glass -->
+        <section>
+            <h2>General Market | Magnifying Glass</h2>
+            <div class="banner-container">
+                <div class="banner">
+                    <iframe id="gm01_300x600" class="s_300x600" src="concepts/gm01/300x600/index.html"></iframe>
+                    <p class="caption">300x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('gm01_300x600')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="gm01_300x250" class="s_300x250" src="concepts/gm01/300x250/index.html"></iframe>
+                    <p class="caption">300x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('gm01_300x250')"></button>
+                </div>
+                <div class="banner">
+                    <iframe id="gm01_970x250" class="s_970x250" src="concepts/gm01/970x250/index.html"></iframe>
+                    <p class="caption">970x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('gm01_970x250')"></button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Free Gift -->
+        <section>
+            <h2>General Market | Free Gift</h2>
+            <div class="banner-container">
+                <div class="banner">
+                    <iframe id="gm02_300x600" class="s_300x600" src="concepts/gm02/300x600/index.html"></iframe>
+                    <p class="caption">300x600</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('gm02_300x600')"></button>
+                </div>
+                
+                <div class="banner">
+                    <iframe id="gm02_970x250" class="s_970x250" src="concepts/gm02/970x250/index.html"></iframe>
+                    <p class="caption">970x250</p>
+                    <button class="replay-button" type="button" onClick="reloadIframe('gm02_970x250')"></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
