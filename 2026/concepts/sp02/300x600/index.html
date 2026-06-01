@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="ad.size" content="width=300,height=600">
+  <title>CMS Medicare Fraud Awareness — 300x600 — Spanish</title>
+
+  <!-- Self-hosted Outfit subset (banner characters only, woff2) -->
+  <style>
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-700-subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 800;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-800-subset.woff2') format('woff2');
+    }
+  </style>
+
+  <style>
+    /* ── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 300px;
+      height: 600px;
+      overflow: hidden;
+    }
+
+    /* ── Banner shell ─────────────────────────────────────── */
+    #banner {
+      position: relative;
+      width: 300px;
+      height: 600px;
+      overflow: hidden;
+      background: radial-gradient(59.08% 30% at 41.67% 68.92%, #193566 0%, #0A1528 100%);
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── All layers: absolute-positioned, start invisible ──── */
+    .layer {
+      position: absolute;
+      opacity: 0;
+      will-change: transform;
+    }
+
+    /* ── Endcard background overlay ──────────────────────── */
+    #endcard-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #1e3c70;
+      z-index: 6;
+      opacity: 0;
+    }
+
+    /* ── Circles: rotating decorative element ─────────────── */
+    #circles {
+      left: -38px;
+      top: 254px;
+      width: 320px;
+      height: 320px;
+      z-index: 1;
+      transform-origin: 50% 50%;
+    }
+
+    /* ── Scene image blocks ──────────────────────────────── */
+    #img-01 {
+      left: 36px;
+      top: 231px;
+      width: 270px;
+      height: 350px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #img-01 img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+    #img-02 {
+      left: 119px;
+      top: 186px;
+      width: 181px;
+      height: 417px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #img-02 img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+    /* ── Scene text blocks ────────────────────────────────── */
+    #s1-txt,
+    #s2-txt {
+      left: 20px;
+      width: 260px;
+      height: 193px;
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.32px;
+      display: flex;
+      align-items: flex-start;
+      z-index: 3;
+    }
+
+    #s3-txt {
+      left: 20px;
+      width: 260px;
+      height: 193px;
+      font-size: 52px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.52px;
+      display: flex;
+      align-items: flex-start;
+      z-index: 3;
+    }
+    #s1-txt { top: 28px; }
+    #s2-txt { top: 45px; }
+    #s3-txt { top: 78px; }
+
+    /* ── Popup images ─────────────────────────────────────── */
+    #popup-1 {
+      left: 38px;
+      top: 241px;
+      width: 68px;
+      height: 68px;
+      z-index: 4;
+    }
+    #popup-1 img { width: 100%; height: 100%; display: block; }
+
+    #popup-2 {
+      left: 119px;
+      top: 287px;
+      width: 74px;
+      height: 74px;
+      z-index: 4;
+    }
+    #popup-2 img { width: 100%; height: 100%; display: block; }
+
+    #popup-3 {
+      left: 115px;
+      top: 259px;
+      width: 76px;
+      height: 75px;
+      z-index: 4;
+    }
+    #popup-3 img { width: 100%; height: 100%; display: block; }
+
+    #popup-4 {
+      left: 74px;
+      top: 214px;
+      width: 133px;
+      height: 133px;
+      z-index: 4;
+    }
+    #popup-4 img { width: 100%; height: 100%; display: block; }
+
+    /* ── Disclaimer bar ───────────────────────────────────── */
+    #disclaimer {
+      left: 0;
+      bottom: 0;
+      width: 300px;
+      height: 22px;
+      background-color: #1e3c70;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      z-index: 5;
+    }
+
+    #disclaimer span {
+      font-size: 11px;
+      font-weight: 800;
+      color: #e8f1ff;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* ── Endcard content ──────────────────────────────────── */
+    #endcard {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+      z-index: 7;
+      /* centered via gsap.set xPercent/yPercent */
+    }
+
+    .ec-item {
+      opacity: 0;
+      will-change: transform;
+    }
+
+    #ec-headline {
+      font-size: 40px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.16;
+      letter-spacing: -0.4px;
+      text-align: center;
+      width: 100%;
+    }
+
+    #ec-btn {
+      background-color: #e74c3c;
+      padding: 14px 24px;
+      border-radius: 4px;
+      box-shadow: 0 8px 14px -10px rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #ec-btn-label {
+      display: block;
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+    }
+
+    #ec-logo {
+      width: 250px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+    #ec-logo img { width: 100%; height: 100%; display: block; }
+
+    /* ── Banner border overlay ────────────────────────────── */
+    #border-ol {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="banner">
+
+    <!-- Endcard background overlay (fades in over scene gradient) -->
+    <div id="endcard-bg"></div>
+
+    <!-- Circles (rotating linear throughout scenes 1–3) -->
+    <img class="layer" id="circles" src="assets/circles.svg" alt="">
+
+    <!-- Scene 1 & 2: main person photo -->
+    <div class="layer" id="img-01">
+      <img src="assets/img_01.webp" alt="">
+    </div>
+
+    <!-- Scene 3: hand photo (slides in from right) -->
+    <div class="layer" id="img-02">
+      <img src="assets/img_02.webp" alt="">
+    </div>
+
+    <!-- Scene texts -->
+    <p class="layer" id="s1-txt">Si recibe una llamada, texto o correo electrónico ofreciéndole regalos...</p>
+    <p class="layer" id="s2-txt">... o servicios gratuitos a cambio de su número de Medicare</p>
+    <p class="layer" id="s3-txt">¡Es una estafa!</p>
+
+    <!-- Popup images -->
+    <div class="layer" id="popup-1"><img src="assets/popup-img-1.svg" alt=""></div>
+    <div class="layer" id="popup-2"><img src="assets/popup-img-2.svg" alt=""></div>
+    <div class="layer" id="popup-3"><img src="assets/popup-img-3.svg" alt=""></div>
+    <div class="layer" id="popup-4"><img src="assets/popup-img-4.svg" alt=""></div>
+
+    <!-- Disclaimer bar (fades out before endcard) -->
+    <div class="layer" id="disclaimer">
+      <span>Un mensaje oficial de Medicare</span>
+    </div>
+
+    <!-- Endcard: headline → button → logo (stacked) -->
+    <div id="endcard">
+      <p class="ec-item" id="ec-headline">Protéjase contra el fraude a Medicare</p>
+      <div class="ec-item" id="ec-btn">
+        <span id="ec-btn-label">Aprenda más</span>
+      </div>
+      <div class="ec-item" id="ec-logo">
+        <img src="assets/medicare-logo.png" alt="Medicare">
+      </div>
+    </div>
+
+    <!-- Border -->
+    <div id="border-ol"></div>
+
+  </div><!-- /#banner -->
+
+  <!-- ── GSAP 3 + CustomEase (combined local) ─────────── -->
+  <script src="gsap-with-ease.min.js"></script>
+
+  <script>
+    /* ── Click tag ──────────────────────────────────────────── */
+    var clickTag = "";
+
+    document.getElementById("ec-btn").addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+    document.getElementById("banner").addEventListener("click", function () {
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+
+    /* ── Register custom eases ──────────────────────────────── */
+    CustomEase.create("fadeSlide", "M0,0 C0.22,1 0.36,1 1,1");
+    CustomEase.create("snapOut",   "M0,0 C0,0 0.123,1.196 0.33,1.319 0.449,1.389 0.582,1.158 0.68,1.09 0.844,0.974 1,1 1,1");
+
+    /* ── Initial states ─────────────────────────────────────── */
+    gsap.set("#s1-txt",      { y: 8 });
+    gsap.set("#s2-txt",      { y: 8 });
+    gsap.set("#s3-txt",      { y: 8 });
+    gsap.set("#popup-1",     { y: 6, scale: 0.9 });
+    gsap.set("#popup-2",     { y: 6, scale: 0.9 });
+    gsap.set("#popup-3",     { y: 6, scale: 0.9 });
+    gsap.set("#popup-4",     { scale: 0.9 });
+    gsap.set("#endcard",     { xPercent: -50, yPercent: -50 });
+    gsap.set("#ec-headline", { y: 8 });
+    gsap.set("#ec-btn",      { scale: 0.85 });
+
+    /* ── Circles: continuous rotation (independent of main tl) ─ */
+    gsap.to("#circles", { rotation: 360, duration: 50, ease: "none", repeat: -1 });
+
+    /* ── Timeline  |  15 s × repeat: 1 = 30 s total ────────── */
+    var tl = gsap.timeline({ repeat: 1, repeatDelay: 0 });
+
+    /* ── SCENE 1  (0 s – 3.5 s) ──────────────────────────── */
+    tl
+      .to("#disclaimer",   { opacity: 1,                                        duration: 0.4, ease: "fadeSlide" }, 0)
+      .to("#circles",      { opacity: 1,                                        duration: 0.4, ease: "fadeSlide" }, 0)
+      .fromTo("#img-01",   { x: 260, opacity: 0 }, { x: 0, opacity: 1,         duration: 0.4, ease: "fadeSlide" }, 0)
+      .to("#s1-txt",       { opacity: 1, y: 0,                                  duration: 0.7, ease: "fadeSlide" }, 0.25)
+      .to("#popup-1",      { opacity: 1, y: 0, scale: 1,                        duration: 0.4, ease: "snapOut"  }, 0.75)
+      .to("#popup-2",      { opacity: 1, y: 0, scale: 1,                        duration: 0.4, ease: "snapOut"  }, 1.5)
+      .to(["#popup-1", "#popup-2"], { opacity: 0,                               duration: 0.1, ease: "power2.inOut" }, 3.2)
+
+    /* ── SCENE 1 → 2 ──────────────────────────────────────── */
+      .to("#s1-txt",       { opacity: 0,                                        duration: 0.3, ease: "power2.inOut" }, 3.5)
+
+    /* ── SCENE 2  (3.5 s – 7 s) ──────────────────────────── */
+      .to("#s2-txt",       { opacity: 1, y: 0,                                  duration: 0.7, ease: "fadeSlide" }, 3.75)
+      .to("#popup-3",      { opacity: 1, y: 0, scale: 1,                        duration: 0.4, ease: "snapOut"  }, 4.0)
+      .to("#popup-3",      { opacity: 0,                                        duration: 0.1, ease: "power2.inOut" }, 6.3)
+
+    /* ── SCENE 2 → 3 ──────────────────────────────────────── */
+      .to("#s2-txt",       { opacity: 0,                                        duration: 0.3, ease: "power2.inOut" }, 6.5)
+      .to("#img-01",       { scale: 1.15, y: 0, x: -10,                      duration: 0.3, ease: "power2.inOut" }, 6.6)
+
+    /* ── SCENE 3  (7 s – 10.5 s) ─────────────────────────── */
+      .to("#s3-txt",       { opacity: 1, y: 0,                                  duration: 0.7, ease: "fadeSlide" }, 7.25)
+      .fromTo("#img-02",   { x: 200, opacity: 0 }, { x: 0, opacity: 1,         duration: 0.4, ease: "fadeSlide" }, 7.0)
+      .to("#popup-4",      { opacity: 1, scale: 1,                              duration: 0.4, ease: "snapOut"  }, 7.5)
+      .to("#popup-4",      { opacity: 0,                                        duration: 0.2, ease: "power2.inOut" }, 9.8)
+
+    /* ── SCENE 3 → ENDCARD ──────────────────────────────── */
+      .to(["#s3-txt", "#img-01", "#img-02", "#circles", "#disclaimer"], { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 10.0)
+      .to("#endcard-bg",   { opacity: 1,                                        duration: 0.7, ease: "power2.inOut" }, 10.2)
+
+    /* ── ENDCARD  (10.5 s – 15 s) ────────────────────────── */
+      .to("#ec-headline",  { opacity: 1, y: 0,                                  duration: 0.7, ease: "fadeSlide" }, 10.5)
+      .to("#ec-btn",       { opacity: 1, scale: 1,                              duration: 0.4, ease: "snapOut"  }, 10.85)
+      .to("#ec-logo",      { opacity: 1,                                        duration: 0.5, ease: "fadeSlide" }, 11.1)
+
+    /* ── Hold at 15 s, then loop ─────────────────────────── */
+      .to({}, { duration: 0.001 }, 15);
+
+    /* ── CTA button hover ───────────────────────────────────── */
+    var ecBtn = document.getElementById("ec-btn");
+    ecBtn.addEventListener("mouseenter", function () {
+      gsap.to(ecBtn, { scale: 1.05, duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+    ecBtn.addEventListener("mouseleave", function () {
+      gsap.to(ecBtn, { scale: 1,    duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+
+  </script>
+</body>
+</html>

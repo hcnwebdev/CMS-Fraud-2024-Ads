@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="ad.size" content="width=970,height=250">
+  <title>CMS Medicare Fraud Awareness 2026 — 970x250 — Spanish</title>
+
+  <!-- Self-hosted Outfit subset (banner characters only, woff2) -->
+  <style>
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-700-subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 800;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-800-subset.woff2') format('woff2');
+    }
+  </style>
+
+  <style>
+    /* ── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 970px;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    /* ── Banner shell ─────────────────────────────────────── */
+    #banner {
+      position: relative;
+      width: 970px;
+      height: 250px;
+      overflow: hidden;
+      background-color: #d1dbe5; /* fallback */
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── All layers: absolute-positioned, start invisible ──── */
+    .layer {
+      position: absolute;
+      opacity: 0;
+      will-change: transform;
+    }
+
+    /* ── Background (shared across all scenes) ────────────── */
+    #bg {
+      inset: 0;
+      width: 970px;
+      height: 250px;
+    }
+    #bg img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ── Scene 1 ──────────────────────────────────────────── */
+    /* Image: right column — left-anchored, top-anchored */
+    #s1-img {
+      left: 581px;
+      top: 5px;
+      width: 325px;
+      height: 245px;
+      overflow: hidden;
+    }
+    #s1-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Text: left column — fills content area (250 − 26 = 224px) */
+    #s1-txt {
+      left: 60px;
+      top: 0;
+      width: 533px;
+      height: 224px;
+      font-size: 50px;
+      font-weight: 700;
+      color: #063560;
+      line-height: 1.16;
+      letter-spacing: -0.5px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ── Scene 2 ──────────────────────────────────────────── */
+    /* Image: right column — bottom-anchored, slides in from right */
+    #s2-img {
+      left: 603px;
+      bottom: 0;
+      width: 367px;
+      height: 250px;
+      overflow: hidden;
+    }
+    #s2-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Text: left column — same slot as scene 1 text */
+    #s2-txt {
+      left: 60px;
+      top: 0;
+      width: 533px;
+      height: 224px;
+      font-size: 50px;
+      font-weight: 700;
+      color: #063560;
+      line-height: 1.16;
+      letter-spacing: -0.5px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ── Scene 3 ──────────────────────────────────────────── */
+    /* Full-width centered text — no image */
+    #s3-txt {
+      left: 50%;
+      top: 0;
+      width: 765px;
+      height: 224px;
+      font-size: 50px;
+      font-weight: 700;
+      color: #063560;
+      line-height: 1.16;
+      letter-spacing: -0.5px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Scene 4 / Endcard ────────────────────────────────── */
+    /* Horizontal split: headline left, btn+logo right */
+    #endcard {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      /* xPercent: -50, yPercent: -50 applied via GSAP → true center */
+      width: 970px;
+      padding: 0 60px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      will-change: transform;
+    }
+
+    /* Endcard children: start invisible, animate in individually */
+    .ec-item {
+      opacity: 0;
+      will-change: transform;
+    }
+
+    #ec-headline {
+      width: 462px;
+      font-size: 50px;
+      font-weight: 700;
+      color: #063560;
+      line-height: 1.16;
+      letter-spacing: -0.5px;
+    }
+
+    /* Right column wrapper: btn stacked above logo */
+    .ec-right {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: flex-end;
+    }
+
+    #ec-btn {
+      width: 229px;
+      background-color: #146a5d;
+      padding: 18px 24px;
+      border-radius: 4px;
+      box-shadow: 0 8px 14px -10px rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #ec-btn-label {
+      display: block;
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+    }
+
+    #ec-logo {
+      width: 300px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+    #ec-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ── Disclaimer bar (970×26 — wider + taller tracking) ── */
+    #disclaimer {
+      left: 0;
+      bottom: 0;
+      width: 970px;
+      height: 26px;
+      background-color: #1e3c70;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      padding: 0 60px;
+    }
+
+    #disclaimer span {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 4.29px;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* ── Banner border overlay ────────────────────────────── */
+    #border-ol {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="banner">
+
+    <!-- Shared background (all scenes) -->
+    <div class="layer" id="bg">
+      <img src="assets/background.jpg" alt="">
+    </div>
+    
+    <!-- Disclaimer bar (persistent) -->
+    <div class="layer" id="disclaimer">
+      <span>un mensaje oficial de medicare</span>
+    </div>
+
+    <!-- Scene 1: Wallet / Medicare card visual (right column) -->
+    <div class="layer" id="s1-img">
+      <img src="assets/scene_1-img.webp" alt="">
+    </div>
+    <p class="layer" id="s1-txt">Proteja su tarjeta de Medicare…</p>
+
+    <!-- Scene 2: House key visual (right column) -->
+    <div class="layer" id="s2-img">
+      <img src="assets/scene_2-img.webp" alt="">
+    </div>
+    <p class="layer" id="s2-txt">… como si fuera la llave de su casa.</p>
+
+    <!-- Scene 3: Text-only message (full width, centered) -->
+    <p class="layer" id="s3-txt">Solo comparta su número con proveedores conocidos.</p>
+
+    <!-- Scene 4 / Endcard (horizontal: headline left, CTA+logo right) -->
+    <div id="endcard">
+      <p class="ec-item" id="ec-headline">Protéjase contra el fraude a Medicare&#x200B;</p>
+      <div class="ec-right">
+        <div class="ec-item" id="ec-btn">
+          <span id="ec-btn-label">Aprenda más</span>
+        </div>
+        <div class="ec-item" id="ec-logo">
+          <img src="assets/medicare-logo.png" alt="Medicare">
+        </div>
+      </div>
+    </div>
+
+    <!-- Border -->
+    <div id="border-ol"></div>
+
+  </div><!-- /#banner -->
+
+  <!-- ── GSAP 3 + CustomEase (combined local) ─────────── -->
+  <script src="gsap-with-ease.min.js"></script>
+
+  <script>
+    /* ── Click tag ──────────────────────────────────────────── */
+    var clickTag = "";
+
+    document.getElementById("ec-btn").addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+    document.getElementById("banner").addEventListener("click", function () {
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+
+    /* ── Register custom eases ──────────────────────────────── */
+    CustomEase.create("fadeSlide", "M0,0 C0.22,1 0.36,1 1,1");   /* smooth ease-out for entrances */
+    CustomEase.create("snapOut",   "M0,0 C0,0 0.123,1.196 0.33,1.319 0.449,1.389 0.582,1.158 0.68,1.09 0.844,0.974 1,1 1,1"); /* snappy overshoot for CTA */
+
+    /* ── Initial states ─────────────────────────────────────── */
+    gsap.set("#s1-img",      { y: 100 });
+    gsap.set("#s2-img",      { x: 250 });
+    /* Text layers: y drift for entrance (no xPercent — fixed left:60px) */
+    gsap.set("#s1-txt",      { y: 10 });
+    gsap.set("#s2-txt",      { y: 10 });
+    /* Scene 3: center horizontally via xPercent; subtle scale for entrance */
+    gsap.set("#s3-txt",      { xPercent: -50, scale: 0.95 });
+    /* Endcard: true center via xPercent / yPercent */
+    gsap.set("#endcard",     { xPercent: -50, yPercent: -50 });
+    /* Endcard items */
+    gsap.set("#ec-headline", { y: 10 });
+    gsap.set("#ec-btn",      { scale: 0.85 });
+
+    /* ── Timeline  |  15 s × repeat: 1 = 30 s total ────────── */
+    var tl = gsap.timeline({ repeat: 1, repeatDelay: 0 });
+
+    /* ── SCENE 1  (0 s – 3.5 s) ──────────────────────────── */
+    tl
+      .to("#bg",         { opacity: 1, duration: 0.6, ease: "fadeSlide" }, 0)
+      .to("#s1-img",     { opacity: 1, y: 0, duration: 0.4, ease: "fadeSlide" }, 0.3)
+      .to("#s1-txt",     { opacity: 1, y: 0, duration: 0.7, ease: "fadeSlide" }, 0.6)
+      .to("#disclaimer", { opacity: 1, duration: 0.5, ease: "fadeSlide" }, 0.2)
+
+    /* ── SCENE 1 → 2 ────────────────────────────────────── */
+      .to(["#s1-img", "#s1-txt"], { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 2.9)
+
+    /* ── SCENE 2  (3.5 s – 7 s) ──────────────────────────── */
+      .to("#s2-img",     { opacity: 1, x: 0, duration: 0.5, ease: "fadeSlide" }, 3.5)
+      .to("#s2-txt",     { opacity: 1, y: 0, duration: 0.7, ease: "fadeSlide" }, 4.0)
+
+    /* ── SCENE 2 → 3 ────────────────────────────────────── */
+      .to(["#s2-img", "#s2-txt"], { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 6.3)
+
+    /* ── SCENE 3  (7 s – 10.5 s) ─────────────────────────── */
+      .to("#s3-txt",     { opacity: 1, scale: 1, duration: 0.7, ease: "fadeSlide" }, 7.0)
+
+    /* ── SCENE 3 → 4 ────────────────────────────────────── */
+      .to(["#s3-txt", "#disclaimer"], { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 10.0)
+
+    /* ── SCENE 4 / ENDCARD  (10.5 s – 15 s) ──────────────── */
+      .to("#ec-headline", { opacity: 1, y: 0, duration: 0.7, ease: "fadeSlide" }, 10.5)
+      .to("#ec-btn",      { opacity: 1, scale: 1, duration: 0.4, ease: "snapOut" }, 10.75)
+      .to("#ec-logo",     { opacity: 1, duration: 0.5, ease: "fadeSlide" }, 11.25)
+
+    /* ── Hold endcard at 15 s, then loop ─────────────────── */
+      .to({}, { duration: 0.001 }, 15);
+
+    /* ── CTA button hover ───────────────────────────────────── */
+    var ecBtn = document.getElementById("ec-btn");
+    ecBtn.addEventListener("mouseenter", function () {
+      gsap.to(ecBtn, { scale: 1.05, duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+    ecBtn.addEventListener("mouseleave", function () {
+      gsap.to(ecBtn, { scale: 1,    duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="ad.size" content="width=728,height=90">
+  <title>CMS Medicare Fraud Awareness — 728x90 — Spanish</title>
+
+  <!-- Self-hosted Outfit subset (banner characters only, woff2) -->
+  <style>
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-700-subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 800;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-800-subset.woff2') format('woff2');
+    }
+  </style>
+
+  <style>
+    /* ── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 728px;
+      height: 90px;
+      overflow: hidden;
+    }
+
+    /* ── Banner shell ─────────────────────────────────────── */
+    #banner {
+      position: relative;
+      width: 728px;
+      height: 90px;
+      overflow: hidden;
+      background-color: #dff8fc;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── All layers: absolute-positioned, start invisible ──── */
+    .layer {
+      position: absolute;
+      opacity: 0;
+      will-change: transform;
+    }
+
+    /* ── Stripes SVG (365×184, no baked-in rotation) ─────────── */
+    /* Rotation: −15° / 165° / −15°. Center x fixed at 603 px.   */
+    #stripes-wrap {
+      position: absolute;
+      left: 460px;
+      top: 0;
+      width: 400px;
+      height: 202px;
+      z-index: 1;
+    }
+
+    /* ── Scene text blocks (left column, all scenes) ──────── */
+    /* Content height = 68 px; disclaimer takes bottom 22 px.  */
+    #s1-txt,
+    #s2-txt,
+    #s3-txt {
+      left: 20px;
+      top: 0;
+      width: 550px;
+      height: 68px;
+      font-size: 30px;
+      font-weight: 700;
+      color: #323a45;
+      line-height: 1.05;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      z-index: 3;
+    }
+
+    /* ── Scene image blocks (right column) ───────────────── */
+    #s1-img {
+      left: 561px;
+      top: 0;
+      width: 167px;
+      height: 90px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #s1-img img { width: 100%; height: 100%; display: block; }
+
+    #s2-img {
+      right: 0;
+      top: 0;
+      width: 226px;
+      height: 90px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #s2-img img { width: 100%; height: 100%; display: block; }
+
+    #s3-img {
+      left: 548px;
+      top: 0;
+      width: 180px;
+      height: 90px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #s3-img img { width: 100%; height: 100%; display: block; }
+
+    /* ── Endcard — horizontal two-column layout ──────────── */
+    /* Left: headline (phase 1) or logo (phase 2)             */
+    /* Right: button (persists across both phases)            */
+    #endcard {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 728px;
+      height: 90px;
+      z-index: 5;
+    }
+
+    .ec-item {
+      opacity: 0;
+      will-change: transform;
+    }
+
+    #ec-headline {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      width: 514px;
+      height: 90px;
+      font-size: 27px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.27px;
+      display: flex;
+      align-items: center;
+    }
+
+    #ec-logo {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      width: 320px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+    #ec-logo img { width: 100%; height: 100%; display: block; }
+
+    #ec-btn {
+      position: absolute;
+      left: 534px;
+      top: 50%;
+      width: 174px;
+      background-color: #f5f15d;
+      padding: 10px 20px;
+      border-radius: 4px;
+      box-shadow: 0 8px 14px -10px rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #ec-btn-label {
+      display: block;
+      font-size: 22px;
+      font-weight: 700;
+      color: #323a45;
+      line-height: 1.05;
+      letter-spacing: -0.22px;
+      white-space: nowrap;
+    }
+
+    /* ── Disclaimer bar ───────────────────────────────────── */
+    #disclaimer {
+      left: 0;
+      bottom: 0;
+      width: 728px;
+      height: 22px;
+      background-color: #146a5d;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 20px;
+      z-index: 0;
+    }
+
+    #disclaimer span {
+      font-size: 11px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* ── Banner border overlay ────────────────────────────── */
+    #border-ol {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="banner">
+    
+    <!-- Disclaimer bar (fades out before endcard) -->
+    <div class="layer" id="disclaimer">
+      <span>Un mensaje oficial de Medicare</span>
+    </div>
+
+    <!-- Decorative stripes (SVG, animated as one unit) -->
+    <img class="layer" id="stripes-wrap" src="assets/stripes.svg" alt="">
+
+    <!-- Scene 1: Medicare statement / card visual -->
+    <div class="layer" id="s1-img">
+      <img src="assets/scene_1-img.webp" alt="">
+    </div>
+    <p class="layer" id="s1-txt">Revise su estado de cuenta de Medicare.</p>
+
+    <!-- Scene 2: Billing statement match -->
+    <div class="layer" id="s2-img">
+      <img src="assets/scene_2-img.webp" alt="">
+    </div>
+    <p class="layer" id="s2-txt">Asegúrese de que la factura coincida...</p>
+
+    <!-- Scene 3: Service received -->
+    <div class="layer" id="s3-img">
+      <img src="assets/scene_3-img.webp" alt="">
+    </div>
+    <p class="layer" id="s3-txt">... con el servicio que recibió.</p>
+
+    <!-- Endcard: phase 1 (headline) → phase 2 (logo), button persists -->
+    <div id="endcard">
+      <p class="ec-item" id="ec-headline">Reporte cualquier actividad sospechosa.</p>
+      <div class="ec-item" id="ec-logo">
+        <img src="assets/medicare-logo.png" alt="Medicare">
+      </div>
+      <div class="ec-item" id="ec-btn">
+        <span id="ec-btn-label">Aprenda más</span>
+      </div>
+    </div>
+
+    <!-- Border -->
+    <div id="border-ol"></div>
+
+  </div><!-- /#banner -->
+
+  <!-- ── GSAP 3 + CustomEase (combined local) ─────────── -->
+  <script src="gsap-with-ease.min.js"></script>
+
+  <script>
+    /* ── Click tag ──────────────────────────────────────────── */
+    var clickTag = "";
+
+    document.getElementById("ec-btn").addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+    document.getElementById("banner").addEventListener("click", function () {
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+
+    /* ── Register custom eases ──────────────────────────────── */
+    CustomEase.create("fadeSlide", "M0,0 C0.22,1 0.36,1 1,1");
+    CustomEase.create("snapOut",   "M0,0 C0,0 0.123,1.196 0.33,1.319 0.449,1.389 0.582,1.158 0.68,1.09 0.844,0.974 1,1 1,1");
+
+    /* ── Initial states ─────────────────────────────────────── */
+    /* Stripes: no baked rotation. Scene 1 center y ≈ 116; GSAP y=15. *
+     * Entrance starts 30 px below: 15 + 30 = 45.                     */
+    gsap.set("#stripes-wrap", { y: 45, rotation: -15 });
+    gsap.set("#s1-txt",       { y: 8 });
+    gsap.set("#s2-txt",       { y: 8 });
+    gsap.set("#s3-txt",       { y: 8 });
+    /* Endcard: button and logo centered via yPercent */
+    gsap.set("#ec-btn",       { yPercent: -50, scale: 0.85 });
+    gsap.set("#ec-logo",      { yPercent: -50 });
+    gsap.set("#ec-headline",  { x: -10 });
+
+    /* ── Timeline  |  15 s × repeat: 1 = 30 s total ────────── */
+    var tl = gsap.timeline({ repeat: 1, repeatDelay: 0 });
+
+    /* ── SCENE 1  (0 s – 3.5 s) ──────────────────────────── */
+    tl
+      .to("#stripes-wrap", { opacity: 1, y: 15,    duration: 0.5, ease: "fadeSlide" }, 0)
+      .to("#disclaimer",   { opacity: 1,            duration: 0.4, ease: "fadeSlide" }, 0.2)
+      .to("#s1-img",       { opacity: 1,            duration: 0.4, ease: "fadeSlide" }, 0.3)
+      .to("#s1-txt",       { opacity: 1, y: 0,     duration: 0.7, ease: "fadeSlide" }, 0.5)
+
+    /* ── SCENE 1 → 2  (slide down off bottom, teleport, slide down from top) */
+      .to(["#s1-img", "#s1-txt"], { opacity: 0,                       duration: 0.4, ease: "power2.inOut" }, 3.0)
+      .to("#stripes-wrap",        { y: 200,                            duration: 0.4, ease: "power2.in"   }, 3.0)
+      .set("#stripes-wrap",       { y: -280, rotation: -165 },                                               3.45)
+      .to("#stripes-wrap",        { y: -138,                           duration: 0.5, ease: "fadeSlide"   }, 3.45)
+
+    /* ── SCENE 2  (3.5 s – 7 s) ──────────────────────────── */
+      .to("#s2-img",       { opacity: 1,            duration: 0.4, ease: "fadeSlide" }, 3.5)
+      .to("#s2-txt",       { opacity: 1, y: 0,     duration: 0.7, ease: "fadeSlide" }, 3.8)
+
+    /* ── SCENE 2 → 3  (slide up off top, teleport, slide up from bottom) */
+      .to(["#s2-img", "#s2-txt"], { opacity: 0,                       duration: 0.4, ease: "power2.inOut" }, 6.5)
+      .to("#stripes-wrap",        { y: -280,                           duration: 0.4, ease: "power2.in"   }, 6.5)
+      .set("#stripes-wrap",       { y: 200, rotation: -15 },                                                6.95)
+      .to("#stripes-wrap",        { y: 15,                             duration: 0.5, ease: "fadeSlide"   }, 6.95)
+
+    /* ── SCENE 3  (7 s – 10.5 s) ─────────────────────────── */
+      .to("#s3-img",       { opacity: 1,            duration: 0.4, ease: "fadeSlide" }, 7.0)
+      .to("#s3-txt",       { opacity: 1, y: 0,     duration: 0.7, ease: "fadeSlide" }, 7.2)
+
+    /* ── SCENE 3 → ENDCARD ──────────────────────────────── */
+      .to(["#s3-img", "#s3-txt", "#stripes-wrap", "#disclaimer"], { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 10.0)
+      .to("#banner",       { backgroundColor: "#146a5d",              duration: 0.7, ease: "power2.inOut" }, 10.2)
+
+    /* ── ENDCARD phase 1: headline + button  (10.5 s) ─────── */
+      .to("#ec-headline",  { opacity: 1, x: 0,     duration: 0.7, ease: "fadeSlide" }, 10.5)
+      .to("#ec-btn",       { opacity: 1, scale: 1,  duration: 0.4, ease: "snapOut"  }, 10.75)
+
+    /* ── ENDCARD phase 2: swap headline → logo  (12.3 s) ──── */
+      .to("#ec-headline",  { opacity: 0,            duration: 0.4, ease: "power2.inOut" }, 12.3)
+      .to("#ec-logo",      { opacity: 1,            duration: 0.5, ease: "fadeSlide"    }, 12.5)
+
+    /* ── Hold at 15 s, then loop ─────────────────────────── */
+      .to({}, { duration: 0.001 }, 15);
+
+    /* ── CTA button hover ───────────────────────────────────── */
+    var ecBtn = document.getElementById("ec-btn");
+    ecBtn.addEventListener("mouseenter", function () {
+      gsap.to(ecBtn, { scale: 1.05, duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+    ecBtn.addEventListener("mouseleave", function () {
+      gsap.to(ecBtn, { scale: 1,    duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+
+  </script>
+</body>
+</html>

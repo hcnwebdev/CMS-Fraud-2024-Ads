@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="ad.size" content="width=728,height=90">
+  <title>CMS Medicare Fraud Awareness — 728x90 — Spanish</title>
+
+  <style>
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-500-subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-700-subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 800;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-800-subset.woff2') format('woff2');
+    }
+  </style>
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 728px;
+      height: 90px;
+      overflow: hidden;
+    }
+
+    #banner {
+      position: relative;
+      width: 728px;
+      height: 90px;
+      overflow: hidden;
+      background-color: #fffbe5;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .layer {
+      position: absolute;
+      opacity: 0;
+      will-change: transform;
+    }
+
+    #endcard-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #e8f1ff;
+      z-index: 6;
+      opacity: 0;
+    }
+
+    /* ── Scene 1 ──────────────────────────────────────────── */
+    #scene-1-img {
+      left: 592px;
+      top: 10px;
+      width: 136px;
+      height: 80px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #scene-1-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    #s1-txt {
+      left: 20px;
+      top: 0;
+      width: 581px;
+      height: 68px;
+      font-size: 22px;
+      font-weight: 500;
+      color: #1e3c70;
+      line-height: 1;
+      letter-spacing: -0.22px;
+      display: flex;
+      align-items: center;
+      z-index: 3;
+    }
+    #s1-txt strong {
+      font-weight: 700;
+    }
+
+    #word-stroke {
+      left: 470px;
+      top: 48px;
+      z-index: 4;
+      overflow: visible;
+    }
+
+    /* ── Scene 2 ──────────────────────────────────────────── */
+    #scene-2-img {
+      left: 548px;
+      top: 0;
+      width: 140px;
+      height: 90px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #scene-2-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* one line, 32px/700 */
+    #s23-txt {
+      left: 20px;
+      top: 0;
+      width: 581px;
+      height: 68px;
+      font-size: 32px;
+      font-weight: 700;
+      color: #1e3c70;
+      line-height: 1.0;
+      letter-spacing: -0.32px;
+      display: flex;
+      align-items: center;
+      z-index: 3;
+    }
+
+    #arrow-wrap-2 {
+      left: 356px;
+      top: 12px;
+      width: 165px;
+      height: 104px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+    }
+    #arrow-inner-2 {
+      transform: rotate(-160deg) scaleY(-1);
+      flex: none;
+      line-height: 0;
+    }
+
+    /* ── Scene 3 ──────────────────────────────────────────── */
+    #scene-3-img {
+      left: 455px;
+      top: 1px;
+      width: 220px;
+      height: 89px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #scene-3-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    #arrow-wrap-3 {
+      left: 388px;
+      top: 3px;
+      width: 165px;
+      height: 107px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+    }
+    #arrow-inner-3 {
+      transform: rotate(-21deg);
+      flex: none;
+      line-height: 0;
+    }
+
+    /* ── Disclaimer bar ───────────────────────────────────── */
+    #disclaimer {
+      left: 0;
+      bottom: 0;
+      width: 728px;
+      height: 22px;
+      background-color: #e8f1ff;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 20px;
+      z-index: 0;
+    }
+    #disclaimer span {
+      font-size: 11px;
+      font-weight: 800;
+      color: #1e3c70;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* ── Endcard: 2-phase (headline → logo, btn persists) ── */
+    #ec-headline {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      width: 481px;
+      height: 90px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1e3c70;
+      line-height: 1.05;
+      letter-spacing: -0.28px;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      will-change: transform;
+      z-index: 7;
+    }
+
+    #ec-logo {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 320px;
+      height: 28px;
+      opacity: 0;
+      will-change: transform;
+      z-index: 7;
+    }
+    #ec-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #ec-btn {
+      position: absolute;
+      left: 534px;
+      top: 23px;
+      width: 174px;
+      height: 44px;
+      background-color: #146a5d;
+      border-radius: 4px;
+      padding: 14px 20px;
+      box-shadow: 0 8px 14px -10px rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      will-change: transform;
+      z-index: 7;
+    }
+
+    #ec-btn-label {
+      display: block;
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.22px;
+      white-space: nowrap;
+    }
+
+    #border-ol {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="banner">
+
+    <div id="endcard-bg"></div>
+
+    <!-- ── SCENE 1 ────────────────────────────────────────── -->
+    <div class="layer" id="scene-1-img">
+      <img src="assets/scene_1-img.webp" alt="">
+    </div>
+
+    <p class="layer" id="s1-txt">¿Regalos <strong>&ldquo;gratuitos&rdquo;</strong> a cambio de su número de&nbsp;<strong>Medicare</strong>?</p>
+
+    <svg class="layer" id="word-stroke"
+         width="92" height="12"
+         viewBox="0 0 102.953 16.718"
+         preserveAspectRatio="none"
+         style="overflow:visible;">
+      <defs>
+        <mask id="wm" maskUnits="userSpaceOnUse" x="-5" y="-20" width="115" height="55">
+          <path id="wmp"
+                d="M1.04372 12.8566C1.04372 12.8566 49.0437 -0.143382 102.544 5.35661"
+                stroke="white" stroke-width="34" fill="none" stroke-linecap="round"/>
+        </mask>
+      </defs>
+      <image href="assets/word-stroke.png"
+             x="-0.25" y="-2.52" width="103" height="15"
+             preserveAspectRatio="none" mask="url(#wm)"/>
+    </svg>
+
+    <!-- ── SCENE 2 ────────────────────────────────────────── -->
+    <div class="layer" id="scene-2-img">
+      <img src="assets/scene_2-img.webp" alt="">
+    </div>
+
+    <p class="layer" id="s23-txt">No se confíe. Es fraude.</p>
+
+    <div class="layer" id="arrow-wrap-2">
+      <div id="arrow-inner-2">
+        <svg width="156" height="53"
+             viewBox="0 0 156 53"
+             preserveAspectRatio="none"
+             style="display:block; overflow:visible;">
+          <defs>
+            <mask id="am2" maskUnits="userSpaceOnUse" x="-20" y="-20" width="200" height="120">
+              <path id="amp2"
+                    d="M8.84 50.61C8.84 50.61 14.33 21.98 41.91 14.00C69.46 6.02 93.72 22.31 84.79 39.58C75.85 56.85 40.11 36.82 72.58 14.00C91.60 0.63 133.94 7.79 149.13 21.95"
+                    stroke="white" stroke-width="48" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </mask>
+          </defs>
+          <image href="assets/arrow-stroke.png"
+                 x="0" y="0" width="156" height="53"
+                 preserveAspectRatio="none"
+                 mask="url(#am2)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ── SCENE 3 ────────────────────────────────────────── -->
+    <div class="layer" id="scene-3-img">
+      <img src="assets/scene_3-img.webp" alt="">
+    </div>
+
+    <div class="layer" id="arrow-wrap-3">
+      <div id="arrow-inner-3">
+        <svg width="156" height="53"
+             viewBox="0 0 156 53"
+             preserveAspectRatio="none"
+             style="display:block; overflow:visible;">
+          <defs>
+            <mask id="am3" maskUnits="userSpaceOnUse" x="-20" y="-20" width="200" height="120">
+              <path id="amp3"
+                    d="M8.84 50.61C8.84 50.61 14.33 21.98 41.91 14.00C69.46 6.02 93.72 22.31 84.79 39.58C75.85 56.85 40.11 36.82 72.58 14.00C91.60 0.63 133.94 7.79 149.13 21.95"
+                    stroke="white" stroke-width="48" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </mask>
+          </defs>
+          <image href="assets/arrow-stroke.png"
+                 x="0" y="0" width="156" height="53"
+                 preserveAspectRatio="none"
+                 mask="url(#am3)"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="layer" id="disclaimer">
+      <span>Un mensaje oficial de Medicare</span>
+    </div>
+
+    <!-- ── ENDCARD ─────────────────────────────────────────── -->
+    <!-- Phase 1: headline + btn | Phase 2: logo + btn -->
+    <p id="ec-headline">Protéjase contra el fraude a Medicare</p>
+    <div id="ec-logo">
+      <img src="assets/medicare-logo.png" alt="Medicare">
+    </div>
+    <div id="ec-btn">
+      <span id="ec-btn-label">Aprenda más</span>
+    </div>
+
+    <div id="border-ol"></div>
+
+  </div><!-- /#banner -->
+
+  <script src="gsap-with-ease.min.js"></script>
+
+  <script>
+    var clickTag = "";
+
+    document.getElementById("ec-btn").addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+    document.getElementById("banner").addEventListener("click", function () {
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+
+    CustomEase.create("fadeSlide", "M0,0 C0.22,1 0.36,1 1,1");
+    CustomEase.create("snapOut",   "M0,0 C0,0 0.123,1.196 0.33,1.319 0.449,1.389 0.582,1.158 0.68,1.09 0.844,0.974 1,1 1,1");
+
+    var wmp  = document.getElementById("wmp");
+    var amp2 = document.getElementById("amp2");
+    var amp3 = document.getElementById("amp3");
+    var wlen = wmp.getTotalLength();
+    var alen = amp2.getTotalLength();
+
+    wmp.style.strokeDasharray  = wlen;
+    amp2.style.strokeDasharray = alen;
+    amp3.style.strokeDasharray = alen;
+
+    gsap.set("#ec-headline", { x: -10 });
+    gsap.set("#ec-btn",      { scale: 0.85 });
+
+    var tl = gsap.timeline({ repeat: 1, repeatDelay: 0 });
+
+    tl
+      .fromTo("#disclaimer",   { opacity: 0 }, { opacity: 1,                  duration: 0.4, ease: "fadeSlide"    }, 0)
+      .fromTo("#scene-1-img",  { opacity: 0, x: 20 }, { opacity: 1, x: 0,    duration: 0.5, ease: "fadeSlide"    }, 0)
+      .fromTo("#s1-txt",       { opacity: 0, y: 6  }, { opacity: 1, y: 0,     duration: 0.7, ease: "fadeSlide"    }, 0.25)
+      .fromTo("#word-stroke",  { opacity: 0 }, { opacity: 1,                  duration: 0.1                       }, 0.75)
+      .fromTo(wmp, { strokeDashoffset: wlen }, { strokeDashoffset: 0,         duration: 0.6, ease: "power2.inOut" }, 0.75)
+
+      .to(["#s1-txt", "#scene-1-img", "#word-stroke"], { opacity: 0,          duration: 0.3, ease: "power2.inOut" }, 3.5)
+
+      .fromTo("#scene-2-img",  { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "fadeSlide"    }, 3.8)
+      .fromTo("#s23-txt",      { opacity: 0, x: -8 }, { opacity: 1, x: 0,    duration: 0.7, ease: "fadeSlide"    }, 4.0)
+      .fromTo("#arrow-wrap-2", { opacity: 0 }, { opacity: 1,                  duration: 0.1                       }, 4)
+      .fromTo(amp2, { strokeDashoffset: alen }, { strokeDashoffset: 0,        duration: 0.9, ease: "power2.inOut" }, 4)
+
+      .to(["#scene-2-img", "#arrow-wrap-2"], { opacity: 0,                    duration: 0.3, ease: "power2.inOut" }, 7.5)
+
+      .fromTo("#scene-3-img",  { opacity: 0, y: 50, rotation: 20 }, { opacity: 1, y: 0, rotation: 0,    duration: 0.5, ease: "fadeSlide"    }, 7.8)
+      .fromTo("#arrow-wrap-3", { opacity: 0 }, { opacity: 1,                  duration: 0.1                       }, 8)
+      .fromTo(amp3, { strokeDashoffset: alen }, { strokeDashoffset: 0,        duration: 0.9, ease: "power2.inOut" }, 8)
+
+      .to(["#scene-3-img", "#s23-txt", "#arrow-wrap-3", "#disclaimer"], { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 11.0)
+      .to("#endcard-bg",   { opacity: 1,                                        duration: 0.7, ease: "power2.inOut" }, 11.2)
+      .to("#ec-headline",  { opacity: 1, x: 0,                                  duration: 0.7, ease: "fadeSlide"    }, 11.5)
+      .to("#ec-btn",       { opacity: 1, scale: 1,                              duration: 0.4, ease: "snapOut"      }, 11.85)
+      .to("#ec-headline",  { opacity: 0,                                        duration: 0.4, ease: "power2.inOut" }, 13.2)
+      .to("#ec-logo",      { opacity: 1,                                        duration: 0.5, ease: "fadeSlide"    }, 13.5)
+      .to({}, { duration: 0.001 }, 15);
+
+    var ecBtn = document.getElementById("ec-btn");
+    ecBtn.addEventListener("mouseenter", function () {
+      gsap.to(ecBtn, { scale: 1.05, duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+    ecBtn.addEventListener("mouseleave", function () {
+      gsap.to(ecBtn, { scale: 1,    duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+
+  </script>
+</body>
+</html>

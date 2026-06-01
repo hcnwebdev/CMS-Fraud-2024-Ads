@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="ad.size" content="width=320,height=50">
+  <title>CMS Medicare Fraud Awareness — 320x50 — Spanish</title>
+
+  <style>
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 500;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-500-subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-700-subset.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Outfit';
+      font-weight: 800;
+      font-style: normal;
+      font-display: block;
+      src: url('assets/outfit-800-subset.woff2') format('woff2');
+    }
+  </style>
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 320px;
+      height: 50px;
+      overflow: hidden;
+    }
+
+    #banner {
+      position: relative;
+      width: 320px;
+      height: 50px;
+      overflow: hidden;
+      background-color: #fffbe5;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* All animated layers start invisible */
+    .layer {
+      position: absolute;
+      opacity: 0;
+      will-change: transform;
+    }
+
+    /* Endcard background overlay */
+    #endcard-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #e8f1ff;
+      z-index: 6;
+      opacity: 0;
+    }
+
+    /* ── Disclaimer frame (pre-roll, starts visible) ──────── */
+    #disclaimer-frame {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none
+    }
+    #disclaimer-frame span {
+      font-size: 10px;
+      font-weight: 800;
+      color: #1e3c70;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* ── Scene 1 ──────────────────────────────────────────── */
+    #scene-1-img {
+      left: 222px;
+      top: 6px;
+      width: 93px;
+      height: 44px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #scene-1-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    #s1-txt {
+      left: 12px;
+      top: 8px;
+      width: 211px;
+      height: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #1e3c70;
+      line-height: 1.1;
+      letter-spacing: -0.15px;
+      z-index: 3;
+    }
+    strong {
+      font-weight: 700;
+    }
+
+    /* word-stroke 1 (scene 1) */
+    #word-stroke-1 {
+      left: 124px;
+      top: 40px;
+      z-index: 4;
+      overflow: visible;
+    }
+
+    /* ── Scene 2 ──────────────────────────────────────────── */
+    #scene-2-img {
+      left: 210px;
+      top: 0;
+      width: 110px;
+      height: 50px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #scene-2-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Shared text for scenes 2 and 3 — persists through scene 3 */
+    #s23-txt {
+      left: 12px;
+      top: 0;
+      width: 230px;
+      height: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e3c70;
+      line-height: 1.05;
+      letter-spacing: -0.18px;
+      display: flex;
+      align-items: center;
+      z-index: 3;
+    }
+
+    /* word-stroke 2 (scene 2) — persists through scene 3 */
+    #word-stroke-2 {
+      left: 122px;
+      top: 34px;
+      z-index: 4;
+      overflow: visible;
+    }
+
+    /* ── Scene 3 ──────────────────────────────────────────── */
+    #scene-3-img {
+      left: 212px;
+      top: 0;
+      width: 108px;
+      height: 50px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    #scene-3-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    #arrow-wrap {
+      left: 209px;
+      top: 7px;
+      width: 68px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+    }
+    #arrow-inner {
+      transform: rotate(-25deg);
+      flex: none;
+      line-height: 0;
+    }
+
+    /* ── Endcard: horizontal layout ──────────────────────── */
+
+    /* Endcard phase 1: text + btn */
+    #ec-text {
+      position: absolute;
+      left: 16px;
+      top: 0;
+      width: 185px;
+      height: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e3c70;
+      line-height: 1.15;
+      letter-spacing: -0.11px;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      will-change: transform;
+      z-index: 8;
+    }
+
+    /* Endcard phase 2: logo (replaces text) */
+    #ec-logo {
+      position: absolute;
+      left: 16px;
+      top: 19px;
+      width: 140px;
+      height: 12px;
+      opacity: 0;
+      will-change: transform;
+      z-index: 8;
+    }
+    #ec-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Endcard button (appears in ph1, stays through ph2) */
+    #ec-btn {
+      position: absolute;
+      left: 201px;
+      top: 10px;
+      width: 103px;
+      height: 29px;
+      background-color: #146a5d;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px -6px rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      will-change: transform;
+      z-index: 8;
+    }
+
+    #ec-btn-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: -0.14px;
+      white-space: nowrap;
+    }
+
+    #border-ol {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="banner">
+
+    <!-- Endcard background overlay -->
+    <div id="endcard-bg"></div>
+
+    <!-- ── DISCLAIMER FRAME (pre-roll, 2 seconds) ─────────── -->
+    <div id="disclaimer-frame">
+      <span>Un mensaje oficial de Medicare</span>
+    </div>
+
+    <!-- ── SCENE 1 ────────────────────────────────────────── -->
+    <div class="layer" id="scene-1-img">
+      <img src="assets/scene_1-img.jpg" alt="">
+    </div>
+
+    <p class="layer" id="s1-txt">¿Regalos&nbsp;<strong>&ldquo;gratuitos&rdquo;</strong>&nbsp;a cambio de su número de&nbsp;<strong>Medicare</strong>?</p>
+
+    <!-- word-stroke 1: scene 1 only -->
+    <svg class="layer" id="word-stroke-1"
+         width="63" height="7"
+         viewBox="0 0 102.953 16.718"
+         preserveAspectRatio="none"
+         style="overflow:visible;">
+      <defs>
+        <mask id="wm1" maskUnits="userSpaceOnUse" x="-5" y="-20" width="115" height="55">
+          <path id="wmp1"
+                d="M1.04372 12.8566C1.04372 12.8566 49.0437 -0.143382 102.544 5.35661"
+                stroke="white" stroke-width="34" fill="none" stroke-linecap="round"/>
+        </mask>
+      </defs>
+      <image href="assets/word-stroke.png"
+             x="-0.25" y="-2.52" width="103" height="15"
+             preserveAspectRatio="none" mask="url(#wm1)"/>
+    </svg>
+
+    <!-- ── SCENE 2 ────────────────────────────────────────── -->
+    <div class="layer" id="scene-2-img">
+      <img src="assets/scene_2-img.jpg" alt="">
+    </div>
+
+    <!-- Text: persists from scene 2 through scene 3 -->
+    <p class="layer" id="s23-txt">No se confíe. Es fraude.</p>
+
+    <!-- word-stroke 2: appears in scene 2, persists through scene 3 -->
+    <svg class="layer" id="word-stroke-2"
+         width="78" height="9"
+         viewBox="0 0 102.953 16.718"
+         preserveAspectRatio="none"
+         style="overflow:visible;">
+      <defs>
+        <mask id="wm2" maskUnits="userSpaceOnUse" x="-5" y="-20" width="115" height="55">
+          <path id="wmp2"
+                d="M1.04372 12.8566C1.04372 12.8566 49.0437 -0.143382 102.544 5.35661"
+                stroke="white" stroke-width="34" fill="none" stroke-linecap="round"/>
+        </mask>
+      </defs>
+      <image href="assets/word-stroke.png"
+             x="-0.25" y="-2.52" width="103" height="15"
+             preserveAspectRatio="none" mask="url(#wm2)"/>
+    </svg>
+
+    <!-- ── SCENE 3 ────────────────────────────────────────── -->
+    <div class="layer" id="scene-3-img">
+      <img src="assets/scene_3-img.jpg" alt="">
+    </div>
+
+    <!-- Arrow stroke (scene 3 only) -->
+    <div class="layer" id="arrow-wrap">
+      <div id="arrow-inner">
+        <svg width="62" height="23.5"
+             viewBox="0 0 62 23.5"
+             preserveAspectRatio="none"
+             style="display:block; overflow:visible;">
+          <defs>
+            <mask id="am" maskUnits="userSpaceOnUse" x="-10" y="-10" width="85" height="55">
+              <path id="amp"
+                    d="M3.51 22.45C3.51 22.45 5.69 9.74 16.65 6.21C27.60 2.67 37.24 9.89 33.69 17.55C30.14 25.21 15.94 16.32 28.84 6.21C36.40 0.28 53.23 3.45 59.26 9.73"
+                    stroke="white" stroke-width="20" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </mask>
+          </defs>
+          <image href="assets/arrow-stroke.png"
+                 x="0" y="0" width="62" height="23.5"
+                 preserveAspectRatio="none"
+                 mask="url(#am)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ── ENDCARD ─────────────────────────────────────────── -->
+    <!-- Phase 1: text + button -->
+    <p id="ec-text">Protéjase contra el fraude a Medicare</p>
+
+    <!-- Phase 2: logo (replaces text), button stays -->
+    <div id="ec-logo">
+      <img src="assets/medicare-logo.png" alt="Medicare">
+    </div>
+
+    <!-- CTA button (visible through both endcard phases) -->
+    <div id="ec-btn">
+      <span id="ec-btn-label">Aprenda más</span>
+    </div>
+
+    <!-- Border -->
+    <div id="border-ol"></div>
+
+  </div><!-- /#banner -->
+
+  <script src="gsap-with-ease.min.js"></script>
+
+  <script>
+    /* ── Click tag ──────────────────────────────────────────── */
+    var clickTag = "";
+
+    document.getElementById("ec-btn").addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+    document.getElementById("banner").addEventListener("click", function () {
+      if (clickTag) window.open(clickTag, "_blank");
+    });
+
+    /* ── Register custom eases ──────────────────────────────── */
+    CustomEase.create("fadeSlide", "M0,0 C0.22,1 0.36,1 1,1");
+    CustomEase.create("snapOut",   "M0,0 C0,0 0.123,1.196 0.33,1.319 0.449,1.389 0.582,1.158 0.68,1.09 0.844,0.974 1,1 1,1");
+
+    /* ── Stroke mask paths ──────────────────────────────────── */
+    var wmp1 = document.getElementById("wmp1");
+    var wmp2 = document.getElementById("wmp2");
+    var amp  = document.getElementById("amp");
+    var wlen1 = wmp1.getTotalLength();
+    var wlen2 = wmp2.getTotalLength();
+    var alen  = amp.getTotalLength();
+
+    wmp1.style.strokeDasharray = wlen1;
+    wmp2.style.strokeDasharray = wlen2;
+    amp.style.strokeDasharray  = alen;
+
+    /* ── Initial states ─────────────────────────────────────── */
+    gsap.set("#ec-btn", { scale: 0.85 });
+
+    /* ── Timeline  |  15.5 s × repeat:1 = 31 s total ─────── */
+    var tl = gsap.timeline({ repeat: 1, repeatDelay: 0 });
+
+    /* ── PRE-ROLL DISCLAIMER  (0 – 2.0 s) ───────────────────── */
+    tl
+      /* Hold disclaimer visible for 2s, then fade out */
+      .to("#disclaimer-frame", { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 1.7)
+
+    /* ── SCENE 1  (2.0 – 5.0 s) ─────────────────────────────── */
+      .fromTo("#scene-1-img",  { opacity: 0, x: 10 }, { opacity: 1, x: 0,     duration: 0.4, ease: "fadeSlide"    }, 2.0)
+      .fromTo("#s1-txt",       { opacity: 0, y: 4  }, { opacity: 1, y: 0,     duration: 0.5, ease: "fadeSlide"    }, 2.2)
+      .fromTo("#word-stroke-1",{ opacity: 0 }, { opacity: 1,                  duration: 0.1                       }, 2.6)
+      .fromTo(wmp1, { strokeDashoffset: wlen1 }, { strokeDashoffset: 0,       duration: 0.5, ease: "power2.inOut" }, 2.6)
+
+    /* ── SCENE 1 → 2 ─────────────────────────────────────────── */
+      .to(["#s1-txt", "#scene-1-img", "#word-stroke-1"], { opacity: 0,        duration: 0.3, ease: "power2.inOut" }, 4.7)
+
+    /* ── SCENE 2  (5.0 – 8.0 s) ─────────────────────────────── */
+      .fromTo("#scene-2-img",  { opacity: 0, y: 10 }, { opacity: 1, y: 0,                 duration: 0.4, ease: "fadeSlide"    }, 5.0)
+      .fromTo("#s23-txt",      { opacity: 0, x: -5 }, { opacity: 1, x: 0,    duration: 0.5, ease: "fadeSlide"    }, 5.1)
+      .fromTo("#word-stroke-2",{ opacity: 0 }, { opacity: 1,                  duration: 0.1                       }, 5.5)
+      .fromTo(wmp2, { strokeDashoffset: wlen2 }, { strokeDashoffset: 0,       duration: 0.5, ease: "power2.inOut" }, 5.5)
+
+    /* ── SCENE 2 → 3  (only image fades out, text + stroke persist) */
+      .to("#scene-2-img",     { opacity: 0,                                   duration: 0.3, ease: "power2.inOut" }, 7.7)
+
+    /* ── SCENE 3  (8.0 – 11.0 s) ────────────────────────────── */
+      .fromTo("#scene-3-img",
+        { opacity: 0, y: 20, rotation: 10, transformOrigin: "bottom right" },
+        { opacity: 1, y: 0,  rotation:  0,               duration: 0.5, ease: "fadeSlide" }, 8.0)
+      .fromTo("#arrow-wrap",  { opacity: 0 }, { opacity: 1,                  duration: 0.1                       }, 8.3)
+      .fromTo(amp, { strokeDashoffset: alen }, { strokeDashoffset: 0,        duration: 0.7, ease: "power2.inOut" }, 8.3)
+
+    /* ── SCENE 3 → ENDCARD ───────────────────────────────────── */
+      .to(["#scene-3-img", "#s23-txt", "#word-stroke-2", "#arrow-wrap"], { opacity: 0, duration: 0.4, ease: "power2.inOut" }, 10.7)
+      .to("#endcard-bg",    { opacity: 1,                                       duration: 0.5, ease: "power2.inOut" }, 11.0)
+
+    /* ── ENDCARD PHASE 1  (11.3 – 13.2 s) ───────────────────── */
+      .to("#ec-text",       { opacity: 1,                                       duration: 0.4, ease: "fadeSlide"    }, 11.3)
+      .to("#ec-btn",        { opacity: 1, scale: 1,                            duration: 0.35, ease: "snapOut"     }, 11.55)
+
+    /* ── ENDCARD PHASE 2  (13.2 – 15.5 s) — logo replaces text  */
+      .to("#ec-text",       { opacity: 0,                                       duration: 0.3, ease: "power2.inOut" }, 13.2)
+      .to("#ec-logo",       { opacity: 1,                                       duration: 0.4, ease: "fadeSlide"    }, 13.5)
+
+    /* ── Hold at 15.5 s, then second play (endcard holds) ────── */
+      .to({}, { duration: 0.001 }, 15.5);
+
+    /* ── CTA button hover ───────────────────────────────────── */
+    var ecBtn = document.getElementById("ec-btn");
+    ecBtn.addEventListener("mouseenter", function () {
+      gsap.to(ecBtn, { scale: 1.05, duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+    ecBtn.addEventListener("mouseleave", function () {
+      gsap.to(ecBtn, { scale: 1,    duration: 0.18, ease: "power2.out", overwrite: "auto" });
+    });
+    
+
+  </script>
+</body>
+</html>
